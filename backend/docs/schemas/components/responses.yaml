@@ -1,0 +1,39 @@
+BadRequest:
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/Error'
+      examples:
+        error:
+          value:
+            error: "Invalid request parameters"
+
+Unauthorized:
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/Error'
+      examples:
+        error:
+          value:
+            error: "Authentication required"
+
+NotFound:
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/Error'
+      examples:
+        error:
+          value:
+            error: "Resource not found"
+
+ServerError:
+  content:
+    application/json:
+      schema:
+        $ref: './schemas.yaml#/Error'
+      examples:
+        error:
+          value:
+            error: "Internal server error" 

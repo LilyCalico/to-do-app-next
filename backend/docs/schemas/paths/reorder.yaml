@@ -1,0 +1,35 @@
+post:
+  summary: タスクの並び替え
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - taskId
+            - newPosition
+          properties:
+            taskId:
+              type: string
+            newPosition:
+              type: number
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '401':
+      $ref: '../components/responses.yaml#/Unauthorized'
+    '404':
+      $ref: '../components/responses.yaml#/NotFound'
+    '500':
+      $ref: '../components/responses.yaml#/ServerError' 

@@ -1,0 +1,47 @@
+Task:
+  type: object
+  properties:
+    taskId:
+      type: string
+    title:
+      type: string
+    status:
+      type: string
+      enum: [OPEN, COMPLETED]
+    position:
+      type: number
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+
+TaskInput:
+  type: object
+  required:
+    - title
+  properties:
+    title:
+      type: string
+    status:
+      type: string
+      enum: [OPEN, COMPLETED]
+      default: OPEN
+
+TaskUpdate:
+  type: object
+  properties:
+    title:
+      type: string
+    status:
+      type: string
+      enum: [OPEN, COMPLETED]
+    position:
+      type: number
+
+Error:
+  type: object
+  properties:
+    error:
+      type: string

@@ -1,0 +1,55 @@
+get:
+  summary: タスクリストの取得
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: status
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [OPEN, COMPLETED]
+    - name: sortBy
+      in: query
+      required: false
+      schema:
+        type: string
+        enum: [position, createdAt]
+        default: position
+  responses:
+    '200':
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              tasks:
+                type: array
+                items:
+                  $ref: '../components/schemas.yaml#/Task'
+    '401':
+      $ref: '../components/responses.yaml#/Unauthorized'
+    '500':
+      $ref: '../components/responses.yaml#/ServerError'
+
+post:
+  summary: 新規タスクの作成
+  security:
+    - bearerAuth: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../components/schemas.yaml#/TaskInput'
+  responses:
+    '201':
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas.yaml#/Task'
+    '400':
+      $ref: '../components/responses.yaml#/BadRequest'
+    '401':
+      $ref: '../components/responses.yaml#/Unauthorized'
+    '500':
+      $ref: '../components/responses.yaml#/ServerError' 
