@@ -15,8 +15,11 @@ paths:
 
 components:
   securitySchemes:
-    $ref: '../schemas/components/securitySchemes.yaml'
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     $ref: '../schemas/components/schemas.yaml'
-  responses:
-    $ref: '../schemas/components/responses.yaml' 
+  # responses:
+  #   $ref: '../schemas/components/responses.yaml' 

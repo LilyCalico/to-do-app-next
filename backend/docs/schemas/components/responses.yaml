@@ -1,4 +1,5 @@
 BadRequest:
+  description: リクエストが不正
   content:
     application/json:
       schema:
@@ -9,6 +10,7 @@ BadRequest:
             error: "Invalid request parameters"
 
 Unauthorized:
+  description: 認証エラー
   content:
     application/json:
       schema:
@@ -19,6 +21,7 @@ Unauthorized:
             error: "Authentication required"
 
 NotFound:
+  description: リソースが見つからない
   content:
     application/json:
       schema:
@@ -29,6 +32,7 @@ NotFound:
             error: "Resource not found"
 
 ServerError:
+  description: サーバーエラー
   content:
     application/json:
       schema:

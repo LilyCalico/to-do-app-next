@@ -52,6 +52,7 @@ delete:
     - bearerAuth: []
   responses:
     '204':
+      description: タスクが正常に削除されました
     '401':
       $ref: '../components/responses.yaml#/Unauthorized'
     '404':
