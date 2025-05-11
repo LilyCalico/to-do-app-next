@@ -184,6 +184,7 @@ export class TaskService {
       const expressionAttributeValues: Record<string, unknown> = {
         ":updatedAt": now
       };
+      const expressionAttributeNames: Record<string, string> = {};
 
       if (taskUpdate.title !== undefined) {
         updateExpression += ", title = :title";
@@ -200,7 +201,8 @@ export class TaskService {
         taskUpdate.status !== undefined &&
         taskUpdate.status !== existingTask.status
       ) {
-        updateExpression += ", status = :status, GSI1SK = :gsi1sk";
+        updateExpression += ", #status = :status, GSI1SK = :gsi1sk";
+        expressionAttributeNames["#status"] = "status";
         expressionAttributeValues[":status"] = taskUpdate.status;
         expressionAttributeValues[
           ":gsi1sk"
@@ -215,6 +217,7 @@ export class TaskService {
         },
         UpdateExpression: updateExpression,
         ExpressionAttributeValues: expressionAttributeValues,
+        ExpressionAttributeNames: expressionAttributeNames,
         ReturnValues: "ALL_NEW" as const
       };
 
